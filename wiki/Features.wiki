@@ -13,3 +13,4 @@
  * Supports Web Sockets (Sprocket.Socket and Sprocket.Gateway)
  * Network status plugin (Shows Ajax activity)
  * Google Analytics integration.  Track usage and know what apps to focus your efforts on.
+ * [http://xant.us/ext-ux/examples/window-edge-snap/ Window Edge Snapping]
