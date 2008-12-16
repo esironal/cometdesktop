@@ -1,0 +1,27 @@
+#labels Featured
+
+==History==
+
+A few years ago I came up with the idea of bringing sockets to the web via an Ajax proxy.  So I started a little project called Shortbus.  yeah, it's a bad name, but so is GIMP :)
+The scope of that project grew quickly from being a web socket proxy to a full fledged event bus.  I joined up with Alex Russell of Dojo toolkit and Greg Wilkins of Jetty, and we renamed that project: Cometd.   I later revived that original idea of creating a web socket library, and built the necessary pieces for WebSockets.  Sprocket, the server framework.  Sprocket.Gateway, the Sprocket HTTP plugin that proxies connections, and Sprocket.Socket the JavaScript library that connects the browser to Sprocket.Gateway.
+
+==Sprocket==
+
+Sprocket is a Perl networking library based on POE. It has support for highly efficient and scalable event loop [http://software.schmorp.de/pkg/libev.html libev] (POE::Loop::EV)  With this, Sprocket can handle thousands of connections.  Sprocket has handled upwards of 20,000 connections on one server.
+
+==Sprocket.Gateway==
+
+Sprocket.Gateway is subclass of the HTTP plugin available with Sprocket.  It can serve files extremely fast with the use of IO::AIO, and handle gateway requests at the same time.  An ACL is used to prevent unauthorized connections to hosts through the gateway.
+
+==Sprocket.Socket==
+
+Sprocket.Socket is a JavaScript library that provides a socket interface for client side applications.  Currently there is an [http://extjs.com/ Extjs] implementation (Ext.ux.Sprocket.Socket), but it is relatively easy to port.  Sprocket.Socket, unlike some web socket libraries, supports multiple sockets simultaneously via a single long polling Xmlhttp or JSONP connection pair.  One connection is used for long polling or JSONP, and the other is used to send quick responses while leaving the other connection to wait for data.  This method provides millisecond response times.
+
+==Proof of Concept==
+
+[http://cometdesktop.com/ Comet Desktop]
+
+A jabber client and an IRC client has been built with Extjs and is hosted in a web desktop environment.  The browser parses the IRC protocol and the XMPP protocol on the client side.  This allows Sprocket.Gateway to only proxy the data, without needing to know what type of stream it is.  Unlike BOSH which is primarily for XMPP.
+
+==Data Framing==
+TODO
