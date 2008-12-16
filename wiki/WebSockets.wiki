@@ -1,5 +1,4 @@
 #labels Featured
-
 ==History==
 
 A few years ago I came up with the idea of bringing sockets to the web via an Ajax proxy.  So I started a little project called Shortbus.  yeah, it's a bad name, but so is GIMP :)
@@ -24,4 +23,40 @@ Sprocket.Socket is a JavaScript library that provides a socket interface for cli
 A jabber client and an IRC client has been built with Extjs and is hosted in a web desktop environment.  The browser parses the IRC protocol and the XMPP protocol on the client side.  This allows Sprocket.Gateway to only proxy the data, without needing to know what type of stream it is.  Unlike BOSH which is primarily for XMPP.
 
 ==Data Framing==
+
+Proper data framing is necessary when dealing with data over sockets.  And WebSockets are no exception.
+
+===The problem===
+
+Consider this.  If the data that the client expects is split into lines (\n or \x0A):
+
+  This is a test\n
+  Foo bar baz\n
+  Just another Perl Hacker\n
+
+If one of those lines ends up on the end of a network frame, the client may receive:
+
+  This is a test\n
+  Foo bar baz\n
+  Just another
+
+and then
+ Perl Hacker\n
+
+If you don't account for this then you will end up with odd inconsistencies.  Generally, JavaScript web programmers aren't accustomed to this problem since they deal with Ajax requests that return full blocks of data.
+
+===The solution===
+
+Data framing filters:  You put data into an object, and zero or more full blocks of data are returned.  It sounds simple, and is, somewhat.  I used a familiar system, from POE, that brings the power of tried and true code from a Perl project, to JavaScript.
+Currently, there are several filters available.  They are written in Extjs, but they will be written to be framework agnostic. (See [http://js.io/ js.io])
+
+==Filters==
+
+ * [Ext.ux.Sprocket.Filter] - The base class for all filters
+ * [Ext.ux.Sprocket.Filter.Stream] - A simple filter, nothing is buffered.  It is usually used as a placeholder in the absence of another filter.
+ * [Ext.ux.Sprocket.Filter.Line] - A line type auto detecting filter.  Supports most types of line combinations (\x0D\x0A?|\x0A\x0D?|\u2028) with the added benefit of being a delimiter splitting filter.  You can specify anything as your delimiter.
+ * [Ext.ux.Sprocket.Filter.JSON] - A JSON filter.  JSON goes in, objects come out, or objects go in, and JSON comes out.
+ * [Ext.ux.Sprocket.Filter.Stackable] - The beauty of using data framing filters starts here.  You can stack any number of filters in any order, and magic comes out.  See the next section.
+
+==Stackable Filters==
 TODO
