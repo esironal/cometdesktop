@@ -1,4 +1,6 @@
 #labels Featured
+=Web Sockets=
+
 ==History==
 
 A few years ago I came up with the idea of bringing sockets to the web via an Ajax proxy. ([http://xantus.vox.com/library/post/codename-shortbus.html March '06])  So I started a little project called Shortbus.  yeah, it's a bad name, but so is GIMP :)
