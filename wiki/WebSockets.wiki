@@ -93,7 +93,11 @@ arrObjs is now an Array of 3 Objects.  (The line filter detected that \r\n is th
   var strData = stack.put(arrObjs);
 }}}
 
-strData is now: {{{ '{"foo":"bar"}\r\n{"bar":"baz"}\r\n{"blitz":"boom"}'; }}}
+strData is now:
+
+{{{
+    '{"foo":"bar"}\r\n{"bar":"baz"}\r\n{"blitz":"boom"}';
+}}}
 
 The stacked filters chain into each other both ways!  There is also an interface for pushing, shifting, unshifting and popping filters on the fly.
 
