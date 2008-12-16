@@ -1,7 +1,7 @@
 #labels Featured
 ==History==
 
-A few years ago I came up with the idea of bringing sockets to the web via an Ajax proxy. (as early as [http://xantus.vox.com/library/post/codename-shortbus.html March '06])  So I started a little project called Shortbus.  yeah, it's a bad name, but so is GIMP :)
+A few years ago I came up with the idea of bringing sockets to the web via an Ajax proxy. ([http://xantus.vox.com/library/post/codename-shortbus.html March '06])  So I started a little project called Shortbus.  yeah, it's a bad name, but so is GIMP :)
 The scope of that project grew quickly from being a web socket proxy to a full fledged event bus.  I joined up with Alex Russell of Dojo toolkit and Greg Wilkins of Jetty, and we renamed that project: Cometd.   I later revived that original idea of creating a web socket library, and built the necessary pieces for WebSockets.  Sprocket, the server framework.  Sprocket.Gateway, the Sprocket HTTP plugin that proxies connections, and Sprocket.Socket the JavaScript library that connects the browser to Sprocket.Gateway.
 
 ==Sprocket==
