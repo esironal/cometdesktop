@@ -30,18 +30,25 @@ Proper data framing is necessary when dealing with data over sockets.  And WebSo
 
 Consider this.  If the data that the client expects is split into lines (\n or \x0A):
 
+{{{
   This is a test\n
   Foo bar baz\n
   Just another Perl Hacker\n
+}}}
 
 If one of those lines ends up on the end of a network frame, the client may receive:
 
+{{{
   This is a test\n
   Foo bar baz\n
   Just another
+}}}
 
 and then
+
+{{{
  Perl Hacker\n
+}}}
 
 If you don't account for this then you will end up with odd inconsistencies.  Generally, JavaScript web programmers aren't accustomed to this problem since they deal with Ajax requests that return full blocks of data.
 
@@ -55,32 +62,38 @@ You put data into an object, and zero or more full blocks of data are returned. 
 
 Currently, there are several filters available.  They are written for the Extjs toolkit, but they can be easily be written to be framework agnostic. (See [http://js.io/ js.io])
 
- * [Ext.ux.Sprocket.Filter] - The base class for all filters
- * [Ext.ux.Sprocket.Filter.Stream] - A simple filter, nothing is buffered.  It is usually used as a placeholder in the absence of another filter.
- * [Ext.ux.Sprocket.Filter.Line] - A line type auto detecting filter.  Supports most types of line combinations (\x0D\x0A?|\x0A\x0D?|\u2028) with the added benefit of being a delimiter splitting filter.  You can specify anything as your delimiter.
- * [Ext.ux.Sprocket.Filter.JSON] - A JSON filter.  JSON goes in, objects come out, or objects go in, and JSON comes out.
- * [Ext.ux.Sprocket.Filter.Stackable] - The beauty of using data framing filters starts here.  You can stack any number of filters in any order, and magic comes out.  See the next section.
+ * [http://xant.us/ext-ux/lib/Sprocket/Filter.js Ext.ux.Sprocket.Filter] - The base class for all filters
+ * [http://xant.us/ext-ux/lib/Sprocket/Filter.js Ext.ux.Sprocket.Filter.Stream] - A simple filter, nothing is buffered.  It is usually used as a placeholder in the absence of another filter.
+ * [http://xant.us/ext-ux/lib/Sprocket/Filter/Line.js Ext.ux.Sprocket.Filter.Line] - A line type auto detecting filter.  Supports most types of line combinations (\x0D\x0A?|\x0A\x0D?|\u2028) with the added benefit of being a delimiter splitting filter.  You can specify anything as your delimiter.
+ * [http://xant.us/ext-ux/lib/Sprocket/Filter/JSON.js Ext.ux.Sprocket.Filter.JSON] - A JSON filter.  JSON goes in, objects come out, or objects go in, and JSON comes out.
+ * [http://xant.us/ext-ux/lib/Sprocket/Filter.js Ext.ux.Sprocket.Filter.Stackable] - The beauty of using data framing filters starts here.  You can stack any number of filters in any order, and magic comes out.  See the next section.
 
 ==Stackable Filters==
 
 Consider this set of stacked filters:
 
+{{{
   var stack = new Ext.ux.Sprocket.Filter.Stackable({
       filters: [
            new Ext.ux.Sprocket.Filter.Line(),
            new Ext.ux.Sprocket.Filter.JSON()
       ]
   });
+}}}
 
 That is a line filter filter combined with a JSON filter.  Lines of JSON can be pushed into that filter stack and an array of json objects is returned:
 
+{{{
   var arrObjs = stack.get('{ "foo": "bar" }\r\n{ "bar": "baz" }\r\n{ "blitz": "boom" }\r\n');
+}}}
 
 arrObjs is now an Array of 3 Objects.  (The line filter detected that \r\n is the line break, and will now split on \r\n from now on.)
 
+{{{
   var strData = stack.put(arrObjs);
+}}}
 
-strData is now: '{"foo":"bar"}\r\n{"bar":"baz"}\r\n{"blitz":"boom"}';
+strData is now: {{{ '{"foo":"bar"}\r\n{"bar":"baz"}\r\n{"blitz":"boom"}'; }}}
 
 The stacked filters chain into each other both ways!  There is also an interface for pushing, shifting, unshifting and popping filters on the fly.
 
