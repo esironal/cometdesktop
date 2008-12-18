@@ -1,12 +1,52 @@
-#summary GPL License for Comet Desktop
+#summary GPL License information for Comet Desktop
 #labels Featured
 
-This is the header that should be present at the top of all source files.
+==License header: original works==
+This is the header that should be present at the top of all original works.
 
 {{{
 /*
- * Comet Desktop v1.0
- * Copyright (c) 2008 - David Davis, All Rights Reserved
+ * Comet Desktop
+ * Copyright (c) 2008 - David W Davis, All Rights Reserved
+ * xantus@cometdesktop.com
+ * http://code.google.com/p/cometdesktop/
+ * http://xant.us/
+ *
+ * License: GPL v3
+ * http://code.google.com/p/cometdesktop/wiki/License
+ *
+ * Comet Desktop is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License
+ *
+ * Comet Desktop is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with Comet Desktop.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Comet Desktop is a fork of qWikiOffice Desktop v0.7.1
+ *
+ * -----
+ *
+ * Ext JS Library
+ * Copyright(c) 2006-2008, Ext JS, LLC.
+ * licensing@extjs.com
+ *
+ * http://extjs.com/license
+ *
+ */
+}}}
+
+==License header: derived works==
+This is the header that should be present at the top of all source files that contain qWiki derived code
+
+{{{
+/*
+ * Comet Desktop
+ * Copyright (c) 2008 - David W Davis, All Rights Reserved
  * xantus@cometdesktop.com
  * http://code.google.com/p/cometdesktop/
  * http://xant.us/
