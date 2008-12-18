@@ -23,7 +23,7 @@ This is the header that should be present at the top of all original works.
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-
+ *
  * You should have received a copy of the GNU General Public License
  * along with Comet Desktop.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -62,7 +62,7 @@ This is the header that should be present at the top of all source files that co
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-
+ *
  * You should have received a copy of the GNU General Public License
  * along with Comet Desktop.  If not, see <http://www.gnu.org/licenses/>.
  *
