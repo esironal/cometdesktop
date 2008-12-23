@@ -3,7 +3,7 @@
 
 = Features =
 
- * Built in task bar tray (right hand side)
+ * Task bar tray (right hand side)
  * Sound Manager and volume control
  * Remote registry.  Window sizes, positions, etc are persistent. (Ajax backed Ext.state.Manager)
  * Drag and Drop shortcuts (alpha)
