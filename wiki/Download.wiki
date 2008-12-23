@@ -1,8 +1,0 @@
-#summary Download page for all release versions
-#labels Featured
-
-= Download Comet Desktop =
-
-  * v0.9.1 - Dec 22, 2008
-    * [http://cometdesktop.googlecode.com/svn/releases/cometdesktop-v0.9.1.zip cometdesktop-v0.9.1.zip]
-    * [http://cometdesktop.googlecode.com/svn/releases/cometdesktop-v0.9.1.tar.gz cometdesktop-v0.9.1.tar.gz]
