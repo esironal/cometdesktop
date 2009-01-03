@@ -1,3 +1,4 @@
+#labels Featured
 v0.9.1 - Dec 22, 2008
         * first public release
 
